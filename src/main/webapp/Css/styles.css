@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+img {
+    width: 100px;
+}
+
+.quantity {
+    display: flex;
+}
+
+.qty,
+.qtyminus,
+.qtyplus {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+    padding: 0 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.total {
+    float: right;
+    margin: 20px;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+}
