@@ -98,6 +98,8 @@
 			<button class="w-100 btn btn-lg btn-primary" type="submit">Đăng
 				nhập</button>
 			<a href="/ShopClothes/register.jsp">Đăng ký tài khoản mới</a>
+			<br>
+			<a href="/ShopClothes/forgotpassword.jsp">Quên mật khẩu</a>
 			<p class="mt-5 mb-3 text-muted">&copy; 2017–2025</p>
 		</form>
 	</main>

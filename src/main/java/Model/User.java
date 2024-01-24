@@ -60,5 +60,10 @@ public class User {
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	public static boolean validate(String email, String pwd) {
+		String regrexEmail = "^[A-Z0-9_a-z]+@[A-Z0-9\\.a-z]+\\.[A-Za-z]{2,6}$";
+		String regrexPassword = "[a-zA-Z0-9_!@#$%^&*]+";
+		return email.matches(regrexEmail) && pwd.matches(regrexPassword);
+	}
 	
 }

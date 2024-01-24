@@ -95,7 +95,8 @@
 			<div class="form-group">
 				<label for="soDienThoai">Số Điện Thoại:</label> <input
 					required="required" type="tel" class="form-control" name="phone"
-					id="soDienThoai" placeholder="Nhập số điện thoại của bạn">
+					id="soDienThoai" placeholder="Nhập số điện thoại của bạn"
+					oninput="validatePhoneNumber(this)" title="Vui lòng chỉ nhập số">
 			</div>
 
 			<button type="submit" class="btn btn-primary">Thanh Toán</button>
@@ -118,6 +119,13 @@
 		<p class="text-center text-muted">© 2003 Nguyễn Đăng Tài, Inc</p>
 	</footer>
 	<!-- End footer -->
+	<script>
+		function validatePhoneNumber(input) {
+			// Loại bỏ mọi ký tự không phải số
+			input.value = input.value.replace(/\D/g, '');
+		}
+	</script>
 </body>
+
 </html>
 

@@ -74,84 +74,96 @@
 		</div>
 	</nav>
 	<!-- End Navbar -->
-	<table class="table table-striped container">
-		<tbody>
-			<tr>
-				<th>Tên</th>
-				<th>Ảnh</th>
-				<th>Số lượng</th>
-				<th>Giá</th>
-				<th>Tổng</th>
-				<th>Xoá</th>
-			</tr>
-			<!-- Giỏ hàng -->
-			<!-- Loop through cart items -->
-			<c:forEach var="item" items="${cart.items}">
-				<tr>
-					<td>${item.product.namepro}</td>
-					<td><img src=${item.product.imagepro } alt="Product Image"></td>
-					<td>
-						<form action="cart" method="post">
-							<input type="hidden" name="productCode"
-								value="<c:out value='${item.product.id}'/>"> <input
-								type="number" name="quantity"
-								value="<c:out value='${item.quantity}'/>" id="quantity">
-							<input type="submit" value="Update">
-						</form>
-					</td>
-					<td class="card-text" style="color: red"><fmt:formatNumber
-							type="number" value="${item.product.pricepro}" pattern="###,###đ" />
-					</td>
 
-					<td class="card-text" style="color: red"><fmt:formatNumber
-							type="number" value="${item.getTotal()}" pattern="###,###đ" /></td>
-
-
-					<td>
-						<form action="cart" method="post">
-							<input type="hidden" name="productCode"
-								value="<c:out value='${item.product.id}'/>"> <input
-								type="hidden" name="quantity" value="0"> <input
-								type="submit" value="Xóa sản phẩm" class="btn btn-primary">
-						</form> <c:set var="clear" value="${item.product.id}"></c:set>
-					</td>
-				</tr>
-			</c:forEach>
-			<!-- End loop -->
-
-		</tbody>
-	</table>
-	<div class="container">
-
-		<!-- Tổng giá của tất cả sản phẩm -->
-		<div style="font-weight: bold; text-align: right;">
-			<c:set var="tong" value="${0}" />
-			<c:forEach items="${cart.items}" var="item">
-				<c:set var="tong"
-					value="${tong + item.quantity * item.product.pricepro}" />
-			</c:forEach>
-			<p style="color: red">
-				Tổng tiền:
-				<fmt:formatNumber type="number" value="${tong}"
-					pattern="###,###đ" />
-			</p>
+	<c:if test="${cart.items == null}">
+		<div class="container"
+			style="display: flex; flex-direction: column">
+			<p class="mx-auto" style="font-size: 25px">Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+			<img class="mx-auto" style="width: 250px; height: 250px; object-fit: cover" alt=""
+				src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png" />
 		</div>
-		<!-- Checkout button -->
-		<c:if test="${session != null}">
-			<div
-				style="font-weight: bold; color: unset; background-color: unset;">
-				<a class="btn btn-primary" href="/ShopClothes/checkout.jsp">Check
-					Out</a>
+	</c:if>
+
+	<c:if test="${cart.items != null}">
+		<table class="table table-striped container">
+			<tbody>
+				<tr>
+					<th>Tên</th>
+					<th>Ảnh</th>
+					<th>Số lượng</th>
+					<th>Giá</th>
+					<th>Tổng</th>
+					<th>Xoá</th>
+				</tr>
+				<!-- Giỏ hàng -->
+				<!-- Loop through cart items -->
+				<c:forEach var="item" items="${cart.items}">
+					<tr>
+						<td>${item.product.namepro}</td>
+						<td><img src=${item.product.imagepro } alt="Product Image"></td>
+						<td>
+							<form action="cart" method="post">
+								<input type="hidden" name="productCode"
+									value="<c:out value='${item.product.id}'/>"> <input
+									type="number" name="quantity"
+									value="<c:out value='${item.quantity}'/>" id="quantity">
+								<input type="submit" value="Update">
+							</form>
+						</td>
+						<td class="card-text" style="color: red"><fmt:formatNumber
+								type="number" value="${item.product.pricepro}"
+								pattern="###,###đ" /></td>
+
+						<td class="card-text" style="color: red"><fmt:formatNumber
+								type="number" value="${item.getTotal()}" pattern="###,###đ" /></td>
+
+
+						<td>
+							<form action="cart" method="post">
+								<input type="hidden" name="productCode"
+									value="<c:out value='${item.product.id}'/>"> <input
+									type="hidden" name="quantity" value="0"> <input
+									type="submit" value="Xóa sản phẩm" class="btn btn-primary">
+							</form> <c:set var="clear" value="${item.product.id}"></c:set>
+						</td>
+					</tr>
+				</c:forEach>
+				<!-- End loop -->
+
+			</tbody>
+		</table>
+		<div class="container">
+
+			<!-- Tổng giá của tất cả sản phẩm -->
+			<div style="font-weight: bold; text-align: right;">
+				<c:set var="tong" value="${0}" />
+				<c:forEach items="${cart.items}" var="item">
+					<c:set var="tong"
+						value="${tong + item.quantity * item.product.pricepro}" />
+				</c:forEach>
+				<p style="color: red">
+					Tổng tiền:
+					<fmt:formatNumber type="number" value="${tong}" pattern="###,###đ" />
+				</p>
 			</div>
-		</c:if>
-		<c:if
-			test="${session == null}">
-			<div style="text-align: center;">
-				<a class="btn btn-primary" href="/ShopClothes/login.jsp">Bạn cần
-					đăng nhập để thanh toán</a>
-			</div>
-		</c:if>
-	</div>
+			<!-- Checkout button -->
+			<c:if test="${session != null}">
+				<div
+					style="font-weight: bold; color: unset; background-color: unset;">
+					<a class="btn btn-primary" href="/ShopClothes/checkout.jsp">Check
+						Out</a>
+				</div>
+			</c:if>
+			<c:if test="${session == null}">
+				<div style="text-align: center;">
+					<a class="btn btn-primary" href="/ShopClothes/login.jsp">Bạn
+						cần đăng nhập để thanh toán</a>
+				</div>
+			</c:if>
+		</div>
+	</c:if>
+
+
 	<!-- Footer -->
 	<footer class="py-3 my-4">
 		<ul class="nav justify-content-center border-bottom pb-3 mb-3">

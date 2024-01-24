@@ -34,7 +34,7 @@ public class CheckoutServlet extends HttpServlet {
 		String sumprice = req.getParameter("sumprice");
 		String sumquantity = req.getParameter("sumquantity");
 		String[] idpro = req.getParameterValues("idproduct"); // lấy ra id sản phẩm
-		List<Product> list = new ArrayList<>();
+		List<Product> list = new ArrayList<>();// danh sách sản phẩm đã mua
 		for (int i = 0; i < idpro.length; i++) {
 			Product newP = null;
 			try {

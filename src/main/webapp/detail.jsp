@@ -111,6 +111,8 @@
 
 			</div>
 		</div>
+		<div class="fb-comments" data-href="detail.jsp?getidpro=${product.id}"
+			data-width="1100" data-numposts="5"></div>
 	</div>
 	<!-- Footer -->
 	<footer class="py-3 my-4">
@@ -129,5 +131,9 @@
 		<p class="text-center text-muted">© 2003 Nguyễn Đăng Tài, Inc</p>
 	</footer>
 	<!-- End footer -->
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous"
+		src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0&appId=382086551239656"
+		nonce="3zk1JdCd"></script>
 </body>
 </html>

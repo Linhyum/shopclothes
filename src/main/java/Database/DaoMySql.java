@@ -133,7 +133,7 @@ public class DaoMySql {
 	// Tạo ra phương thức đăng nhập lấy thông tin từ cơ sở dữ liệu
 	public User loginUser(String username, String pass) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String select = "select * from user where username =? and pass =?";
+		String select = "select * from user where email =? and pass =?";
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopclothes", "root",
 				"123456");
 
